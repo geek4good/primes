@@ -1,12 +1,12 @@
 require "test_helper"
 
 module Primes
-  describe SieveOfEratosthenes do
-    subject { SieveOfEratosthenes.new }
+  describe Sieve do
+    subject { Sieve.new }
 
     describe "#first" do
       it "returns the first n prime numbers" do
-        assert_equal(subject.first(12), [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37])
+        assert_equal([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37], subject.first(12))
       end
     end
 
