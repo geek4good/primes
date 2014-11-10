@@ -26,5 +26,17 @@ module Primes
         assert_equal [40, 48, 56, 64], subject.row(3)
       end
     end
+
+    describe "#to_string" do
+      it "returns the table's string representation" do
+        assert_equal <<TABLE, subject.to_s
+  x  5  6  7  8
+  5 25 30 35 40
+  6 30 36 42 48
+  7 35 42 49 56
+  8 40 48 56 64
+TABLE
+      end
+    end
   end
 end
