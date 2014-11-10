@@ -28,4 +28,21 @@ PRIMES
   5 10 15 25
 PRIMES
   end
+
+  it "fails if '--size' doesn't get a numerical value" do
+    output, _ = Open3.capture2e("bin/primes", "--size=ten")
+    assert_match /ArgumentError/, output
+  end
+
+  it "prints the nth prime number when given the param '--number'" do
+    output, _ = Open3.capture2e("bin/primes", "--number=17")
+    assert_equal <<PRIMES, output
+59
+PRIMES
+  end
+
+  it "fails if '--number' doesn't get a numerical value" do
+    output, _ = Open3.capture2e("bin/primes", "--number=seventeen")
+    assert_match /ArgumentError/, output
+  end
 end

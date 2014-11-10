@@ -4,7 +4,11 @@ require "primes/multiplication_table"
 
 module Primes
   def self.multiplication_table(options)
-    size = options[:size].to_i
-    MultiplicationTable.new(Sieve.new.first(size))
+    sieve = Sieve.new
+
+    return sieve.nth(Integer(options[:number])) if options[:number]
+
+    size = Integer(options[:size])
+    MultiplicationTable.new(sieve.first(size))
   end
 end

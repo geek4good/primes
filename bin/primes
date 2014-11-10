@@ -12,6 +12,11 @@ usage = ""
 OptionParser.new do |opts|
   opts.banner = "Usage: primes [options]"
 
+  opts.on("-n", "--number INDEX",
+          "Get the nth prime number (INDEX is one-based)") do |n|
+    options[:number] = n
+  end
+
   opts.on("-s", "--size NUMBER",
           "Specify the multiplication table's size (default 10)") do |s|
     options[:size] = s
