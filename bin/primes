@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+
+lib = File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "primes"
+
+options = { :size => "10" }
+usage = ""
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: primes [options]"
+
+  opts.on("-s", "--size NUMBER",
+          "Specify the multiplication table's size (default 10)") do |s|
+    options[:size] = s
+  end
+
+  opts.separator ""
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+
+  opts.on_tail("-v", "--version", "Show version") do
+    puts "Primes v#{Primes::VERSION}"
+    exit
+  end
+
+  opts.on_tail do
+    usage = opts.to_s
+  end
+end.parse!
+
+puts Primes.multiplication_table(options)
